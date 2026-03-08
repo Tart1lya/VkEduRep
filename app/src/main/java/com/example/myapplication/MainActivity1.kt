@@ -1,13 +1,16 @@
 package com.example.myapplication
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.net.toUri
 
 class MainActivity1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +24,7 @@ class MainActivity1 : AppCompatActivity() {
         }
         var editText: EditText = findViewById(R.id.editTextText)
         var button: Button = findViewById(R.id.button)
+        var button2: Button = findViewById(R.id.button2)
 
         button.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java).apply {
@@ -29,5 +33,20 @@ class MainActivity1 : AppCompatActivity() {
             startActivity(intent)
         }
 
+        button2.setOnClickListener {
+            if (validatePhoneNumber(editText.text.toString())) {
+                val callIntent = Intent(Intent.ACTION_DIAL, "tel:${editText.text}".toUri())
+                startActivity(callIntent)
+            } else {
+                Toast.makeText(this, "Неверный формат", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+    }
+
+    fun validatePhoneNumber(phone: String): Boolean {
+        val pattern = Regex("^\\+?[0-9]{10,15}$")
+        return pattern.matches(phone.replace("\\s|-|\\(|\\)".toRegex(), ""))
     }
 }
