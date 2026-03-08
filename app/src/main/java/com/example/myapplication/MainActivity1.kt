@@ -22,9 +22,10 @@ class MainActivity1 : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        var editText: EditText = findViewById(R.id.editTextText)
-        var button: Button = findViewById(R.id.button)
-        var button2: Button = findViewById(R.id.button2)
+        val editText: EditText = findViewById(R.id.editTextText)
+        val button: Button = findViewById(R.id.button)
+        val button2: Button = findViewById(R.id.button2)
+        val button3: Button = findViewById(R.id.button3)
 
         button.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java).apply {
@@ -41,6 +42,14 @@ class MainActivity1 : AppCompatActivity() {
                 Toast.makeText(this, "Неверный формат", Toast.LENGTH_SHORT).show()
             }
 
+        }
+
+        button3.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, editText.text)
+            }
+            this.startActivity(Intent.createChooser(intent, title))
         }
 
     }
