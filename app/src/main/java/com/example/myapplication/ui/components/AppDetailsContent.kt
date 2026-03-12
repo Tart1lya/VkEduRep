@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,6 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.myapplication.data.AppDetails
+import com.example.myapplication.data.AppDetailsState
+import com.example.myapplication.data.Category
 import com.example.myapplication.ui.theme.VkEducationTheme
 
 @Composable

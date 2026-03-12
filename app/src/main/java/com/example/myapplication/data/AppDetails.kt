@@ -1,4 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.data
+
+import androidx.compose.runtime.Immutable
 
 data class AppDetails(
     val id: String,
@@ -11,3 +13,11 @@ data class AppDetails(
     val screenshotUrlList: List<String>?,
     val description: String,
 )
+
+@Immutable
+sealed interface AppDetailsState {
+    data class Content(
+        val appDetails: AppDetails,
+        val descriptionCollapsed: Boolean,
+    ) : AppDetailsState
+}

@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
