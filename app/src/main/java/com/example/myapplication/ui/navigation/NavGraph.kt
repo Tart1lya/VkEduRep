@@ -6,7 +6,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.myapplication.ui.screens.AppDetailScreen
-import com.example.myapplication.ui.screens.AppsListData
 import com.example.myapplication.ui.screens.AppsListScreen
 
 internal object Screen {
@@ -26,7 +25,6 @@ fun AppNavHost(
     ) {
         composable(Screen.APPS_LIST) {
             AppsListScreen(
-                apps = AppsListData.SAMPLE_APPS,
                 onAppClick = { navController.navigate(Screen.APP_DETAIL) }
             )
         }

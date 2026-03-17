@@ -2,6 +2,7 @@ package com.example.myapplication.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,6 +18,7 @@ import com.example.myapplication.R
 
 @Composable
 fun Head(
+    onLogoClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -28,7 +30,10 @@ fun Head(
     ) {
         Image(
             painter = painterResource(id = R.drawable.rustore_color_logo),
-            modifier = Modifier.size(width = 150.dp, height = 75.dp),
+            modifier = Modifier
+                .size(width = 150.dp, height = 75.dp)
+                .padding(start = 16.dp)
+                .clickable(onClick = onLogoClick),
             contentDescription = "RuStore"
         )
         Image(
